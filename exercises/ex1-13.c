@@ -4,35 +4,51 @@
 main()
 {
 	int wordlencounter[MAX_WORD_LEN];
+	int wordfreqcounter[MAX_WORD_LEN];
 	int counter = 0;
 	printf("I dont wanna run\n");
 
-	// TODO: Interesting things happen if you run the loop =10.
+	// TODO: Interesting things happen if you run the loop till 10.
 	for( counter = 0; counter < MAX_WORD_LEN; counter++ )
+	{
 		wordlencounter[counter] = 0;
-	
+		wordfreqcounter[counter] = 0;
+	}
 	counter = 0;
+	int numwords = 0;
 	char c;
 	while( (c = getchar()) != EOF )
 	{
-scanagain:	if( c == ' ' || c == '\n' || c == '\t' || c == '\b' )
+		if( c == ' ' || c == '\b' || c == '\t' || c == '\n' )
 		{
-			c = getchar();
 			counter = 0;
-			goto scanagain;
-		
+			++numwords;
 		}
 		else
 		{
+			wordlencounter[numwords]++;
 			++counter;
 		}
-		wordlencounter[counter] += counter;
 	}
 
-	for( counter = 0; counter < MAX_WORD_LEN; ++counter )
+	for( counter = 0; counter < 10; counter++ )
 	{
-	    printf("Length Range [%d] = %d\n", \
-		    counter, wordlencounter[counter]);
+		wordfreqcounter[wordlencounter[counter]]++;
+	}		
+
+	for( counter = 1; counter < MAX_WORD_LEN; ++counter )
+	{
+	    printf("Length Range [%d] = %d: %.*s>\n", \
+		    counter, wordfreqcounter[counter], \
+				wordfreqcounter[counter], "============");
 	}
+
+	printf("---------------------\n");
+
+	printf("[1]  [2]  [3]  [4]  [5]  [6]  [7]  [8]  [9]\n");
+
+	for( counter = 1; counter < MAX_WORD_LEN; ++counter )
+	{
+		for ( 	
 }
 	
